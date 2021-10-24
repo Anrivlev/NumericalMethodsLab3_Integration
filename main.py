@@ -25,7 +25,7 @@ def simpsons(a, b, f):
 
 
 def three_eights(a, b, f):
-    return (b - a) * (f(a) + 3 * f(a + (b - a) / 3) + 3 * f(a + 2 * (b - a) / 3) + f(b)) / 8
+    return (b - a) * (f(a) + 3 * f((2 * a + b) / 3) + 3 * f((a + 2 * b) / 3) + f(b)) / 8
 
 
 def gaussian5(a, b, f):
@@ -42,7 +42,6 @@ def main():
     hstep = 0.001
     hrange = np.arange(hmin, hmax, hstep)
 
-    truevalue = integral_of_func(b) - integral_of_func(a)
     integral = dict()
     error = dict()
     error[rectangle] = np.zeros(len(hrange))
@@ -89,6 +88,10 @@ def main():
 
     for key in gradient:
         print(key.__name__, ":", gradient[key])
+
+    print()
+    print("How much three-eights rule is better than Simpson's:")
+    print(np.average(abs(np.exp(error[simpsons]) / np.exp(error[three_eights]))))
 
     plt.show()
 
