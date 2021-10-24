@@ -48,7 +48,7 @@ def main():
     error[trapezoid] = np.zeros(len(hrange))
     error[simpsons] = np.zeros(len(hrange))
     error[three_eights] = np.zeros(len(hrange))
-    error[gaussian5] = np.zeros(len(hrange))
+    #error[gaussian5] = np.zeros(len(hrange))
 
     for k in range(len(hrange)):
         h = hrange[k]
@@ -58,7 +58,7 @@ def main():
         integral[trapezoid] = 0
         integral[simpsons] = 0
         integral[three_eights] = 0
-        integral[gaussian5] = 0
+        #integral[gaussian5] = 0
 
         for i in range(1, len(xrange)):
             for key in integral:
@@ -95,5 +95,5 @@ def main():
 
     plt.show()
 
-if __name__ == '__main__':
-    main()
+
+main()
